@@ -28,7 +28,7 @@ public class ETASController {
 	}
 	
 	@RequestMapping(value = "request" , method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> postRequest(@Valid @RequestBody CabRequest request) {
+	public ResponseEntity<Object> postRequest(@Valid @RequestBody CabRequest request) throws ParseException{
 		return new ResponseEntity<>(etasservice.createCabRequest(request), HttpStatus.valueOf(200));
 	}
 	
