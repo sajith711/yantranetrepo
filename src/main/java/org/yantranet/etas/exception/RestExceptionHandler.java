@@ -49,4 +49,15 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 		body.put(ERROR, errors);
 		return new ResponseEntity<Object>(body, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	@ExceptionHandler(ParseException.class)
+	protected ResponseEntity<Object> handleParseException(ParseException ex) {
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put(STATUS, 500);
+		List<String> errors = Arrays.asList("Exception Occured while parsing the date: "+ex.getMessage());
+		ex.printStackTrace();
+		body.put(ERROR, errors);
+		return new ResponseEntity<>(body,HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
 }
