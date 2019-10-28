@@ -52,7 +52,7 @@ public class ETASService {
 		}
 	}
 	
-	public Object createCabRequest(CabRequest request) {
+	public Object createCabRequest(CabRequest request) throws ParseException{
 		List<Cabs> cabs = (List<Cabs>) cabrepo.findAll();
 		Map<String, String> response = new HashMap<>();
 		if(!ETASService.checkForSupportedHours(request.getDatetimeofjourney())) {
@@ -104,22 +104,14 @@ public class ETASService {
 		}
 	}
 	
-	public static boolean checkForSupportedHours(String rdate) {
+	public static boolean checkForSupportedHours(String rdate) throws ParseException{
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
 		Date date = null;
-		try {
-			date = formatter.parse(rdate);
-		}catch (ParseException e) {
-			e.printStackTrace();
-		}
+		date = formatter.parse(rdate);
 		int day = date.getDay();
 		SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm:ss");
 		String hour = null;
-		try {
-			hour = sdfHour.format(sdfHour.parse(rdate.split(" ")[1]));
-		}catch (ParseException e) {
-			e.printStackTrace();
-		}
+		hour = sdfHour.format(sdfHour.parse(rdate.split(" ")[1]));
 		if(day!=0 && day!=6 && hour.compareTo("22:00:00") >= 0 && hour.compareTo("01:00:00") <= 0)
 			return true;
 		else
