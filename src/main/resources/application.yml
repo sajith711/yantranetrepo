@@ -1,0 +1,21 @@
+server:
+  port: 8095
+  servlet:
+    context-path: /etasservice
+spring:
+  application:
+    name: ETAS
+  datasource:
+    url: jdbc:mariadb://ec2-18-217-134-69.us-east-2.compute.amazonaws.com:3306/test
+    username: root
+    password: test
+    driver-class-name: irg.mariadb.jdbc.Driver
+    tomcat-initial-size: 15
+    tomcat.max-wait: 10000
+    tomcat-max-active: 50
+    tomcat.max-idle: 15
+    tomcat.min-idle: 8
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: truesssssss
