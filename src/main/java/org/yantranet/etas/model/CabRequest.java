@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity(name = "cabrequest")
 @Table(name = "cabrequest")
