@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity(name = "cabrequest")
+@Table(name = "cabrequest")
+@DynamicUpdate
 public class CabRequest implements Serializable{
 
 	/**
